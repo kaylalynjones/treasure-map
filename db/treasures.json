@@ -1,0 +1,29 @@
+{
+  "_id":{"$oid":"000000000000000000000001"},
+  "name":"Mummy Hand",
+  "photo":"img/mummy-hand.jpg",
+  "location":{"name":"Cairo, Egypt", "lat":30.0599153, "lng":31.2620199},
+  "difficulty":"hard",
+  "hint":"Start at the El Tahir roundabout, travel West to Port Said Road, at the corner of Port Said and Kobri Al Kazhar, go into the sewers. You will find it in a 2 meter radius.",
+  "found":false
+},
+{
+  "_id":{"$oid":"000000000000000000000002"},
+  "name":"Meteroite",
+  "photo":"img/meteroite.jpg",
+  "location":{"name":"Ulaanbaatar, Mongolia", "lat":47.8916501,"lng":106.9018714},
+  "difficulty":"easy",
+  "hint":"Ask the old man at the gas station on Belkh Road for directions to Vahhn Clan, ask Mrs. Vahhn where she was born, turn at the next hill, dig.",
+  "found":true
+},
+{
+  "_id":{"$oid":"000000000000000000000003"},
+  "name":"Ancient Relic",
+  "photo":"img/ancient-relic.jpg",
+  "location":{"name":"Mexico City, Mexico", "lat":19.3200988,"lng":-99.1521845},
+  "difficulty":"medium",
+  "hint":"Walk out into the desert towards the east from the center of town, dig seven feet down.",
+  "found":false
+}
+
+
