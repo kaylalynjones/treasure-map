@@ -3,9 +3,10 @@
 
 'use strict';
 
-var expect = require('chai'),
+var expect = require('chai').expect,
     Treasure = require('../../app/models/treasure'),
     dbConnect = require('../../app/lib/mongodb'),
+    Mongo = require('mongodb'),
     cp = require('child_process'),
     db = ('treasure-test');
 
@@ -24,10 +25,8 @@ describe('Treasure', function(){
 
   describe('constructor', function(){
     it('should create a new treasure', function(){
-      var obj = { name:'gold coin', photo:'img/gold-coin-india.jpg', location:{name:'Jaipur', lat: 26.8852107, lng: 75.7905578}, difficulty:'medium', hint:'It is beside the mystics house in a trench.'},
+      var obj = {name:'gold coin', photos:['img/gold-coin-india.jpg'], loc:{name:'Jaipur', lat: '26.8852107', lng: '75.7905578'}, difficulty:'medium', hint:'It is beside the mystics house in a trench.'},
       t = new Treasure(obj);
-      console.log(t);
-
       expect(t).to.be.instanceof(Treasure);
     });
   });
@@ -35,6 +34,7 @@ describe('Treasure', function(){
   describe('.all', function(){
     it('should get all the treasures', function(done){
       Treasure.all(function(err, treasures){
+        console.log(treasures);
         expect(treasures).to.have.length(3);
         done();
       });
@@ -45,21 +45,32 @@ describe('Treasure', function(){
     it('should get a treasure by the id', function(done){
       var id = '000000000000000000000001';
       Treasure.findById(id, function(treasure){
-
-        console.log(treasure);
         expect(treasure.name).to.equal('Mummy Hand');
         done();
       });
     });
   });
 
-  //describe('.create', function(){
-    //it('should create a new treasure', function(done){
-      //var obj = { name:'gold coin', photo:'img/gold-coin-india.jpg', location:{name:'Jaipur', lat: 26.8852107, lng: 75.7905578}, difficulty:'medium', hint:'It is beside the mystics house in a trench.'},
-      //Treasure.create(obj, function(treasure){
-        //expect(tresure)
-      //});
-    //});
-  //});
+  describe('#save', function(){
+    it('should save a treasure', function(done){
+      var obj = {name:'Gold Coin', photos:['img/gold-coin-india.jpg'], loc:{name:'Jaipur', lat: '26.8852107', lng: '75.7905578'}, difficulty:'medium', hint:'It is beside the mystics house in a trench.'},
+      t = new Treasure(obj);
+      t.save(function(treasure){
+        expect(treasure._id).to.be.instanceof(Mongo.ObjectID);
+        done();
+      });
+    });
+  });
+
+  describe('#toggleFound', function(){
+    it('should toggle the Found attribute', function(done){
+      var id = '000000000000000000000001';
+      Treasure.findById(id, function(treasure){
+        treasure.toggleFound();
+        expect(treasure.found).to.be.true;
+        done();
+      });
+    });
+  });
 
 });//end

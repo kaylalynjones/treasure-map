@@ -1,0 +1,23 @@
+extends ../shared/template
+block content
+  .row
+    .col-xs-2
+    .col-xs-8
+      #map
+    .col-xs-2
+  .row
+    .col-xs-2
+    .col-xs-8#treasure(data-name=treasure.name, data-lat=treasure.loc.lat, data-lng=treasure.loc.lng)
+      h1.found-button.text-center Mission: #{treasure.name}
+      .col-xs-4
+        each photo in treasure.photos
+          .photo: img(src= '#{photo}')
+      .col-xs-4
+        .hint= treasure.hint
+    .col-xs-2
+  form(method='post', action='/treasures/'+treasure._id)
+    button.btn.btn-success.found-button I found it!
+
+
+block scripts
+  script(src='/js/user/treasure-show.js')

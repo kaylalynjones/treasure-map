@@ -1,0 +1,30 @@
+extends ../shared/template
+block content
+  .row
+    .col-xs-2
+    .col-xs-8
+      form.form(roll='form', method='post', action='/treasures/new', enctype='multipart/form-data')
+        .form-group
+          label(for='name') Name
+            input.form-control.input-lg(type='text', name='name')
+          label(for='photo') Photo
+            input.input-lg#url(type='file', name='photos' multiple='true')
+          label(for=loc) Location
+            input.form-control.input-lg#name(type='text', name='loc')
+            input#lat(type='hidden', name='lat')
+            input#lng(type='hidden', name='lng')
+          label(for='difficulty') Difficulty
+            select.form-control.input-lg(name='difficulty')
+              option Easy
+              option Medium
+              option Hard
+          br
+          label(for='hint') Hint
+            textarea.form-control.input-lg(name='hint', rows=6)
+          br
+          button.btn.btn-success(type='submit') Submit
+    .col-xs-2
+
+
+block scripts
+  script(src='/js/user/treasure-form.js')
