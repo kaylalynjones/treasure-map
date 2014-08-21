@@ -11,19 +11,33 @@ block content
       .col-xs-8
         table.table.table-striped
           thead
-            th Name
-            th Location
-            th Difficulty
-            th Order
-            th Discovered
+            th: a(href='?sortby=name') Name
+            th: a(href='?sortby=loc.name') Location
+            th Tags
+            th: a(href='?sortby=difficulty') Difficulty
+            th: a(href='?sortby=order') Order
+            th: a(href='?sortby=found') Discovered
           tbody
             each treasure in treasures
               tr(data-name=treasure.loc.name, data-lat=treasure.loc.lat, data-lng=treasure.loc.lng)
                 td: a(href='/treasures/'+treasure._id)= treasure.name
                 td= treasure.loc.name
-                td= treasure.difficulty
+                td
+                  - if(treasure.tags != null) {
+                  each tag in treasure.tags
+                    a(href='#')= tag
+                  -}
+                - if (treasure.difficulty === 'Hard'){
+                td(style='color: red;')= treasure.difficulty
+                - } else if (treasure.difficulty === 'Medium'){
+                td(style='color: orange;')= treasure.difficulty
+                - } else {
+                td(style='color:gold;')= treasure.difficulty
+                - }
                 td= treasure.order
-                td= treasure.found
+                - var picture;
+                - (!treasure.found) ? picture = '../img/unfinished.png' : picture = '../img/success.png'
+                td: img(src='#{picture}')= treasure.found
       .col-xs-2
 
 block scripts

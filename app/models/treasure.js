@@ -9,7 +9,7 @@ function Treasure(obj){
   console.log(obj);
   this.name = obj.name;
   this.photos = obj.photos || [];
-  this.order =obj.order;
+  this.order =parseInt(obj.order);
   this.loc = {name:obj.loc.name, lat:parseFloat(obj.loc.lat), lng:parseFloat(obj.loc.lng)};
   this.tags = obj.tags.split(',').map(function(tag){
     return tag.trim();
@@ -33,6 +33,10 @@ Treasure.findById = function(id, cb){
     treasure = changePrototype(treasure);
     cb(treasure);
   });
+};
+
+Treasure.find = function(query, orderby, cb){
+  Treasure.collection.find({$query:query, $orderby:orderby}).toArray(cb);
 };
 
 Treasure.prototype.save = function(cb){

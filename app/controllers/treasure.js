@@ -8,7 +8,10 @@ exports.init = function(req, res){
 };
 
 exports.index = function(req, res){
-  Treasure.all(function(err, treasures){
+  console.log(req.query.sortby);
+  var sortby = {};
+  sortby[req.query.sortby] = 1;
+  Treasure.find({}, sortby, function(err, treasures){
     res.render('treasures/index', {treasures:treasures});
   });
 };
@@ -25,7 +28,8 @@ exports.create = function(req, res){
       },
       order: fields.order[0],
       difficulty: fields.difficulty[0],
-      hint: fields.hint[0]
+      hint: fields.hint[0],
+      tags: fields.tags[0]
     },
     treasure = new Treasure(t);
     treasure.save(function(){
