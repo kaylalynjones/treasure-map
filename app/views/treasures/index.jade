@@ -1,27 +1,28 @@
 extends ../shared/template
 block content
-  .row
-    .col-xs-2
-    .col-xs-8
-      #map
-    .col-xs-2
-  .row
-    .col-xs-2
-    .col-xs-8
-      table.table.table-striped
-        thead
-          th Name
-          th Location
-          th Difficulty
-          th Discovered
-        tbody
-          each treasure in treasures
-            tr(data-name=treasure.loc.name, data-lat=treasure.loc.lat, data-lng=treasure.loc.lng)
-              td: a(href='/treasures/'+treasure._id)= treasure.name
-              td= treasure.loc.name
-              td= treasure.difficulty
-              td= treasure.found
-    .col-xs-2
+  #index-page
+    .row
+      .col-xs-2
+      .col-xs-8
+        #map
+      .col-xs-2
+    .row
+      .col-xs-2
+      .col-xs-8
+        table.table.table-striped
+          thead
+            th Name
+            th Location
+            th Difficulty
+            th Discovered
+          tbody
+            each treasure in treasures
+              tr(data-name=treasure.loc.name, data-lat=treasure.loc.lat, data-lng=treasure.loc.lng)
+                td: a(href='/treasures/'+treasure._id)= treasure.name
+                td= treasure.loc.name
+                td= treasure.difficulty
+                td= treasure.found
+      .col-xs-2
 
 block scripts
   script(src='/js/user/treasure.js')

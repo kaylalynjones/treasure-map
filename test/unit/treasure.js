@@ -25,7 +25,7 @@ describe('Treasure', function(){
 
   describe('constructor', function(){
     it('should create a new treasure', function(){
-      var obj = {name:'gold coin', photos:['img/gold-coin-india.jpg'], loc:{name:'Jaipur', lat: '26.8852107', lng: '75.7905578'}, difficulty:'medium', hint:'It is beside the mystics house in a trench.'},
+      var obj = {name:'gold coin', photos:['img/gold-coin-india.jpg'], order: 1, loc:{name:'Jaipur', lat: '26.8852107', lng: '75.7905578'}, difficulty:'medium', hint:'It is beside the mystics house in a trench.'},
       t = new Treasure(obj);
       expect(t).to.be.instanceof(Treasure);
     });
@@ -53,7 +53,7 @@ describe('Treasure', function(){
 
   describe('#save', function(){
     it('should save a treasure', function(done){
-      var obj = {name:'Gold Coin', photos:['img/gold-coin-india.jpg'], loc:{name:'Jaipur', lat: '26.8852107', lng: '75.7905578'}, difficulty:'medium', hint:'It is beside the mystics house in a trench.'},
+      var obj = {name:'Gold Coin', photos:['img/gold-coin-india.jpg'], order: 2, loc:{name:'Jaipur', lat: '26.8852107', lng: '75.7905578'}, difficulty:'medium', hint:'It is beside the mystics house in a trench.'},
       t = new Treasure(obj);
       t.save(function(treasure){
         expect(treasure._id).to.be.instanceof(Mongo.ObjectID);

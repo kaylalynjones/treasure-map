@@ -1,23 +1,31 @@
 extends ../shared/template
 block content
-  .row
-    .col-xs-2
-    .col-xs-8
-      #map
-    .col-xs-2
-  .row
-    .col-xs-2
-    .col-xs-8#treasure(data-name=treasure.name, data-lat=treasure.loc.lat, data-lng=treasure.loc.lng)
-      h1.found-button.text-center Mission: #{treasure.name}
-      .col-xs-4
-        each photo in treasure.photos
-          .photo: img(src= '#{photo}')
-      .col-xs-4
-        .hint= treasure.hint
-    .col-xs-2
-  form(method='post', action='/treasures/'+treasure._id)
-    button.btn.btn-success.found-button I found it!
-
+  #show-page
+    .row
+      .col-xs-2
+      .col-xs-8
+        #map
+      .col-xs-2
+    .row
+      .col-xs-2
+      .col-xs-8#treasure(data-name=treasure.name, data-lat=treasure.loc.lat, data-lng=treasure.loc.lng)
+        h1.found-button.text-center Mission: #{treasure.name}
+        .col-xs-6
+          each photo in treasure.photos
+            .photo: img.img-circle(src= '#{photo}')
+        .col-xs-2
+          .hint.bg-info= treasure.hint
+      .col-xs-2
+    .row
+      .col-xs-1
+      .col-xs-10
+      - if(!treasure.found) {
+        form(method='post', action='/treasures/'+treasure._id)
+          button.btn.btn-success.btn-block.btn-found I found it!
+      - } else {
+        .scored: h2.text-center You have already scored this!
+      - }
+      .col-xs-1
 
 block scripts
   script(src='/js/user/treasure-show.js')

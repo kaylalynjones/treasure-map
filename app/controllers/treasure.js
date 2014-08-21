@@ -25,8 +25,8 @@ exports.create = function(req, res){
       },
       difficulty: fields.difficulty[0],
       hint: fields.hint[0]
-    };
-    var treasure = new Treasure(t);
+    },
+    treasure = new Treasure(t);
     treasure.save(function(){
       treasure.uploadPhotos(files, function(){
         res.redirect('/treasures');

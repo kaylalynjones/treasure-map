@@ -9,6 +9,7 @@ function Treasure(obj){
   console.log(obj);
   this.name = obj.name;
   this.photos = obj.photos || [];
+  this.order =obj.order;
   this.loc = {name:obj.loc.name, lat:parseFloat(obj.loc.lat), lng:parseFloat(obj.loc.lng)};
   this.difficulty  = obj.difficulty;
   this.hint = obj.hint;

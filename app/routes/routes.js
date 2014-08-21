@@ -15,6 +15,9 @@ module.exports = function(app, express){
   app.use(methodOverride());
 
   app.get('/', home.index);
+  app.get('/about', home.about);
+  app.get('/contact', home.contact);
+  app.get('/faq', home.faq);
 
   app.get('/treasures/new', treasure.init);
   app.post('/treasures/new', treasure.create);
