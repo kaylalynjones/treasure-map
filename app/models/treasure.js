@@ -11,6 +11,9 @@ function Treasure(obj){
   this.photos = obj.photos || [];
   this.order =obj.order;
   this.loc = {name:obj.loc.name, lat:parseFloat(obj.loc.lat), lng:parseFloat(obj.loc.lng)};
+  this.tags = obj.tags.split(',').map(function(tag){
+    return tag.trim();
+  });
   this.difficulty  = obj.difficulty;
   this.hint = obj.hint;
   this.found = false;
@@ -21,7 +24,7 @@ Object.defineProperty(Treasure, 'collection', {
 });
 
 Treasure.all = function(cb){
-  Treasure.collection.find().toArray(cb);
+  Treasure.collection.find().sort({order:1}).toArray(cb);
 };
 
 Treasure.findById = function(id, cb){

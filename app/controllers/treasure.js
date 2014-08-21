@@ -23,6 +23,7 @@ exports.create = function(req, res){
         lat: fields.lat[0],
         lng: fields.lng[0]
       },
+      order: fields.order[0],
       difficulty: fields.difficulty[0],
       hint: fields.hint[0]
     },

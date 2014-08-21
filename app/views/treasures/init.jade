@@ -2,36 +2,43 @@ extends ../shared/template
 block content
   #init-page
     .row
+      h2.text-center Create a Treasure Hunt!
+    .row
       .col-xs-12
         form.form.form-horizontal(roll='form', method='post', action='/treasures/new', enctype='multipart/form-data')
-          .form-group
-            label(for='name') Name
-              input.form-control.input-lg(type='text', name='name', placeholder="Johnny Cash's Guitar")
-          .form-group
-            label(for='photo') Photo
-              input.input-lg#url(type='file', name='photos' multiple='true')
-          .form-group
-            label(for=loc) Location
-              input.form-control.input-lg#name(type='text', name='loc', placeholder='Nashville, TN')
-              input#lat(type='hidden', name='lat')
-              input#lng(type='hidden', name='lng')
-          .form-group
-            label(for='difficulty') Difficulty
-              select.form-control.input-lg(name='difficulty', placeholder='Easy')
-                option Easy
-                option Medium
-                option Hard
-            br
-          .form-group
-            label(for='order') Order
-            br
-            input.input-lg#order(type='number', name='order' value=1)
-          .form-group
-            label(for='hint') Hint
-              textarea.form-control.input-lg(name='hint', rows=6, placeholder='Go here, do that.')
-            br
-            button.btn.btn-success(type='submit') Submit
-
+          .col-xs-6.form-half
+            .form-group
+              label(for='name') Name
+                input.form-control.input-lg(type='text', name='name', placeholder="Johnny Cash's Guitar")
+            .form-group
+              label(for='photo') Photo
+                input.input-lg#url(type='file', name='photos' multiple='true')
+            .form-group
+              label(for=loc) Location
+                input.form-control.input-lg#name(type='text', name='loc', placeholder='Nashville, TN')
+                input#lat(type='hidden', name='lat')
+                input#lng(type='hidden', name='lng')
+            .form-group
+              label(for='difficulty') Difficulty
+                select.form-control.input-lg(name='difficulty', placeholder='Easy')
+                  option Easy
+                  option Medium
+                  option Hard
+          .col-xs-6.form-half
+            .form-group
+              label(for=tags) Tags
+                input.form-control.input-lg(type='text', name='tags', placeholder='Dangerous, High Profit, Fun')
+            .form-group
+              label(for='order') Order
+              br
+              input.input-lg#order(type='number', name='order' value=1)
+            .form-group
+              label(for='hint') Hint
+                textarea.form-control.input-lg(name='hint', rows=6, placeholder='Go here, do that.')
+            .row
+              .col-xs-8
+                button.btn.btn-success.btn-block(type='submit') Submit
+              .col-xs-4
 
 block scripts
   script(src='/js/user/treasure-form.js')

@@ -1,14 +1,17 @@
 extends ../shared/template
 block content
-  h2 Home
-  .panel.panel-default
-    .panel-body
-      p Lebowski ipsum say friend, ya got any more a that
-      | good sarsaparilla? Dolor sit amet, consectetur
-      | adipiscing elit praesent. Walter, come off it.
-      | You're not even fucking Jewish. You're fucking Polish
-      | Catholic. Dude. 100% electronic.
-
+  .row
+    .col-xs-2
+    .col-xs-8
+      h2 Home
+      .panel.panel-default
+          .panel-body
+            p Lebowski ipsum say friend, ya got any more a that
+            | good sarsaparilla? Dolor sit amet, consectetur
+            | adipiscing elit praesent. Walter, come off it.
+            | You're not even fucking Jewish. You're fucking Polish
+            | Catholic. Dude. 100% electronic.
+    .col-xs-2
 block scripts
   script(src='/js/user/home.js')
 

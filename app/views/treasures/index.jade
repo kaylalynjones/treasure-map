@@ -14,6 +14,7 @@ block content
             th Name
             th Location
             th Difficulty
+            th Order
             th Discovered
           tbody
             each treasure in treasures
@@ -21,6 +22,7 @@ block content
                 td: a(href='/treasures/'+treasure._id)= treasure.name
                 td= treasure.loc.name
                 td= treasure.difficulty
+                td= treasure.order
                 td= treasure.found
       .col-xs-2
 

@@ -7,7 +7,7 @@
   var map;
 
   $(document).ready(function(){
-    initMap(30, 9, 2);
+    initMap(45, 9, 4);
     var positions = getPositions();
     positions.forEach(function(pos){
       console.log(pos);
