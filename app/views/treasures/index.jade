@@ -24,12 +24,12 @@ block content
                 td= treasure.loc.name
                 td
                   - if(treasure.tags != null) {
-                  each tag in treasure.tags
-                    a(href='#')= tag
+                    each tag in treasure.tags
+                      a.tag(href='?tag=#{tag}')= tag
                   -}
-                - if (treasure.difficulty === 'Hard'){
+                - if (treasure.difficulty === 'Tough'){
                 td(style='color: red;')= treasure.difficulty
-                - } else if (treasure.difficulty === 'Medium'){
+                - } else if (treasure.difficulty === 'Manageable'){
                 td(style='color: orange;')= treasure.difficulty
                 - } else {
                 td(style='color:gold;')= treasure.difficulty

@@ -8,10 +8,13 @@ exports.init = function(req, res){
 };
 
 exports.index = function(req, res){
-  console.log(req.query.sortby);
+  var query = {};
+  if (req.query.tag) {
+    query = { tags: { $in: [ req.query.tag ] } };
+  }
   var sortby = {};
   sortby[req.query.sortby] = 1;
-  Treasure.find({}, sortby, function(err, treasures){
+  Treasure.find(query, sortby, function(err, treasures){
     res.render('treasures/index', {treasures:treasures});
   });
 };
